@@ -2,7 +2,6 @@
 <h3 align="center">Booky</h3>
 
   <p align="center">
-    A fully functional booking sites for making reservations.
     <br />
     <a href="https://github.com/abeeb-ahmed/booky-v2"><strong>Explore the docs »</strong></a>
     <br />
@@ -22,7 +21,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+A fully functional booking sites for making reservations. It includes user authentication, an admin page to manage users, hotels and rooms.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
