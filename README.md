@@ -31,8 +31,9 @@
 ### Built With
 
 
-* [![React][React.js]][React-url]
-* [![Node][Node.js]][Nodejs-url]
+* React
+* Nodejs
+* MongoDB
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
