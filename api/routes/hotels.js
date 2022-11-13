@@ -1,4 +1,4 @@
-import { Router } from "express";
+import express from "express";
 
 import {
   createHotel,
@@ -6,19 +6,23 @@ import {
   getHotel,
   getHotels,
   updateHotel,
-} from "../controllers/hotels.js";
+} from "../controllers/hotel.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
+const router = express.Router();
 
-const router = Router();
+//CREATE
+router.post("/", verifyAdmin, createHotel);
 
-// create hotel router
-router.post("/", createHotel);
-// get hotels
+//UPDATE
+router.put("/:id", verifyAdmin, updateHotel);
+
+//DELETE
+router.delete("/:id", verifyAdmin, deleteHotel);
+
+//GET
+router.get("/find/:id", getHotel);
+
+//GET ALL
 router.get("/", getHotels);
-// get hotel
-router.get("/:id", getHotel);
-// update hotel
-router.put("/:id", updateHotel);
-// delete hotel
-router.delete("/:id", deleteHotel);
 
 export default router;
