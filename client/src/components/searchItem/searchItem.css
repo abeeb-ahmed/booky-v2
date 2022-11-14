@@ -89,7 +89,8 @@
   text-align: right;
   margin-top: 5px;
 }
-.siDetailTexts > .siCheckButton {
+
+a .siCheckButton {
   background-color: #0071c2;
   color: white;
   border: none;

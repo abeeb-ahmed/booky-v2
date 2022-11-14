@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ratingWord from "../../utils/ratingWord";
 import "./searchItem.css";
 
@@ -28,7 +29,9 @@ const SearchItem = ({ data }) => {
         <div className="siDetailTexts">
           <span className="siPrice">${data.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <button className="siCheckButton">See availability</button>
+          <Link to={`/hotels/${data._id}`}>
+            <button className="siCheckButton">See availability</button>
+          </Link>
         </div>
       </div>
     </div>

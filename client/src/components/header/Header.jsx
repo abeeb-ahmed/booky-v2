@@ -14,11 +14,14 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import "./header.css";
+import { useContext } from "react";
+import { SearchContext } from "../../context/search/searchContext";
 
 const Header = ({ type = "" }) => {
+  const { dispatch } = useContext(SearchContext);
   const navigate = useNavigate();
   const [destination, setDestination] = useState("");
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     new Date(Date.now()),
     new Date(Date.now()),
   ]);
@@ -67,12 +70,16 @@ const Header = ({ type = "" }) => {
 
   // Handle search
   const handleSearch = () => {
-    if (destination != "") {
+    if (destination !== "") {
+      dispatch({
+        type: "NEW_SEARCH",
+        payload: { city: destination, options, dates },
+      });
       navigate("/hotels", {
         state: {
           destination,
           options,
-          date,
+          dates,
         },
       });
     } else {
@@ -134,15 +141,15 @@ const Header = ({ type = "" }) => {
                       className="headerIcon"
                     />
                     <span onClick={handleCalendarOpen}>
-                      {`${formatDate(date[0])} to ${formatDate(date[1])}`}
+                      {`${formatDate(dates[0])} to ${formatDate(dates[1])}`}
                     </span>
                     {/* Popup calendar */}
                     {calendarOpen && (
                       <div className="headerCalendar">
                         <Calendar
                           selectRange={true}
-                          onChange={setDate}
-                          value={date}
+                          onChange={setDates}
+                          value={dates}
                           required
                         />
                       </div>

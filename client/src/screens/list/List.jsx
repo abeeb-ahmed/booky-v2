@@ -13,11 +13,10 @@ import useFetch from "../../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
-  console.log(location);
   const [destination, setDestination] = useState(location.state.destination);
-  const [date, setDate] = useState([
-    location.state.date[0],
-    location.state.date[1],
+  const [dates, setDates] = useState([
+    location.state.dates[0],
+    location.state.dates[1],
   ]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000000000000);
@@ -71,7 +70,7 @@ const List = () => {
 
   // handle search
   const handleSearch = () => {
-    data = reFetch(
+    reFetch(
       `http://localhost:8800/api/hotels?city=${destination}&min=${minPrice}&max=${maxPrice}`
     );
   };
@@ -96,15 +95,15 @@ const List = () => {
             <div className="listSearchItem">
               <label>Date</label>
               <span onClick={handleCalendarOpen}>
-                {`${formatDate(date[0])} to ${formatDate(date[1])}`}
+                {`${formatDate(dates[0])} to ${formatDate(dates[1])}`}
               </span>
               {/* Popup calendar */}
               {calendarOpen && (
                 <div className="headerCalendar">
                   <Calendar
                     selectRange={true}
-                    onChange={setDate}
-                    value={date}
+                    onChange={setDates}
+                    value={dates}
                   />
                 </div>
               )}
