@@ -1,0 +1,135 @@
+.searchItem {
+  display: flex;
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.siImg {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  object-fit: contain;
+  flex: 2;
+}
+.siDesc {
+  flex: 3;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.siDetails {
+  flex: 1.2;
+}
+.siTitle {
+  margin: 0;
+  color: #0071c2;
+}
+.siDistance {
+  font-size: 12px;
+}
+.siTaxiOp {
+  font-size: 12px;
+  color: white;
+  background-color: #008009;
+  width: max-content;
+  padding: 3px;
+  border-radius: 5px;
+}
+.siSubtitle {
+  font-size: 12px;
+  font-weight: bold;
+}
+.siFeatures {
+  font-size: 12px;
+}
+.siCancelOp {
+  font-size: 12px;
+  color: #008009;
+  font-weight: bold;
+}
+.sicancelOpSubtitle {
+  font-size: 12px;
+  color: #008009;
+}
+.siDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.siRating {
+  display: flex;
+  justify-content: space-between;
+}
+.siRating span {
+  font-weight: 500;
+}
+.siRating button {
+  background-color: #003580;
+  border: none;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+}
+.siDetailTexts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.siDetailTexts > .siPrice {
+  font-weight: 500;
+  font-size: 20px;
+}
+.siDetailTexts > .siTaxOp {
+  font-size: 12px;
+  text-align: right;
+  margin-top: 5px;
+}
+.siDetailTexts > .siCheckButton {
+  background-color: #0071c2;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .searchItem {
+    flex-direction: column;
+    border: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .siImg {
+    flex: 1;
+    width: 100%;
+    height: auto;
+  }
+  .siDesc {
+    flex: 1;
+  }
+  .siDetails {
+    flex: 1;
+  }
+  .siDetailTexts {
+    align-items: flex-start;
+  }
+  .siRating {
+    display: block;
+  }
+  .siRating span {
+    margin-right: 10px;
+  }
+}

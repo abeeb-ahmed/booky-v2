@@ -1,0 +1,31 @@
+.footerContainer {
+  max-width: 1024px;
+  font-size: 12px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.fList {
+  padding: 0;
+}
+
+.fListItem {
+  color: #003580;
+  list-style: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.fBottom {
+  font-size: 12px;
+  text-align: center;
+  padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .footerContainer {
+    padding: 10px;
+  }
+}

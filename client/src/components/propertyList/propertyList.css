@@ -1,0 +1,25 @@
+.propertyList {
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.proprtyListItem {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.proprtyListItem img {
+  object-fit: cover;
+  height: 150px;
+  width: 100%;
+}
+
+.propertyListTexts h2 {
+  margin: 0;
+  text-transform: capitalize;
+}

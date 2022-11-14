@@ -1,0 +1,144 @@
+.hotelContainer {
+  width: 100%;
+}
+.hotelWrapper {
+  max-width: 1024px;
+  margin: 30px auto;
+  padding: 0 50px;
+}
+.hotelTitle {
+  margin: 0 0 5px 0;
+}
+.hotelAddress {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.hotelAddress span {
+  margin-left: 10px;
+}
+.hotelDistance {
+  color: #0071c2;
+  flex: 1;
+  margin: 0 0 5px 0;
+}
+.hotelDesc {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.hotelPriceHighlight {
+  color: #008009;
+}
+.hotelImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+.hotelImages > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.hotelDetails {
+  display: flex;
+  margin-top: 30px;
+}
+.hotelDetails h2 {
+  margin: 0;
+}
+.hotelDetails span {
+  font-size: 24px;
+}
+.hDetailsFirst {
+  flex: 3;
+}
+.hDetailsSecond {
+  flex: 1;
+  padding: 20px;
+  background-color: #ebf3ff;
+}
+.hDetailsSecond > h2 {
+  color: #555;
+  font-size: 20px;
+}
+.hDetailsSecond button {
+  width: 100%;
+  background-color: #0071c2;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.slider {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.644);
+}
+.sliderWrapper {
+  width: 80%;
+  height: 80vh;
+  display: flex;
+  object-fit: cover;
+  justify-content: center;
+  align-items: center;
+}
+.sliderWrapper .closeIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 50px;
+  color: lightgray;
+  cursor: pointer;
+}
+.sliderWrapper .arrowIcon {
+  font-size: 50px;
+  color: lightgray;
+  cursor: pointer;
+  margin: 20px;
+}
+.sliderWrapper img {
+  height: 100%;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .hotelWrapper {
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  .hotelTitle {
+    font-size: 24px;
+  }
+  .hotelImages {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .hotelDetails {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+  }
+  .slider {
+    padding: 0;
+    justify-content: center;
+  }
+  .sliderWrapper img {
+    max-width: 80vw;
+    height: auto;
+  }
+  .sliderWrapper .closeIcon {
+    font-size: 20px;
+  }
+  .sliderWrapper .arrowIcon {
+    font-size: 20px;
+    margin: 10px;
+  }
+}
