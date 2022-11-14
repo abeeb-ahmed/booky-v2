@@ -10,8 +10,11 @@ import Nav from "../../components/nav/Nav";
 import "./list.css";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import { useContext } from "react";
+import { SearchContext } from "../../context/search/searchContext";
 
 const List = () => {
+  const { dispatch } = useContext(SearchContext);
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
   const [dates, setDates] = useState([
@@ -70,6 +73,10 @@ const List = () => {
 
   // handle search
   const handleSearch = () => {
+    dispatch({
+      type: "NEW_SEARCH",
+      payload: { city: destination, dates, options },
+    });
     reFetch(
       `http://localhost:8800/api/hotels?city=${destination}&min=${minPrice}&max=${maxPrice}`
     );

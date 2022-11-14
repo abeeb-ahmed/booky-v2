@@ -14,8 +14,11 @@ import MailingList from "../../components/mailingList/MailingList";
 import Footer from "../../components/footer/Footer";
 import "./hotel.css";
 import useFetch from "../../hooks/useFetch";
+import { useContext } from "react";
+import { SearchContext } from "../../context/search/searchContext";
 
 const Hotel = () => {
+  const { dates, options } = useContext(SearchContext);
   const location = useLocation().pathname;
   const id = location.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
@@ -46,6 +49,19 @@ const Hotel = () => {
   const { data, loading } = useFetch(
     `http://localhost:8800/api/hotels/find/${id}`
   );
+  const milisecondsPerDay = 86400000;
+
+  // find the difference between two dates in days. Date2 should be latest date
+  const dayDifference = (date1, date2) => {
+    if (dates) {
+      const diff = Math.abs(date2.getTime()) - Math.abs(date1.getTime());
+      return Math.ceil(diff / milisecondsPerDay);
+    } else return;
+  };
+
+  const dayDiff = dayDifference(dates[0], dates[1]);
+
+  console.log(options);
 
   return (
     <div>
@@ -107,14 +123,17 @@ const Hotel = () => {
                     <p>{data?.desc}</p>
                   </div>
                   <div className="hDetailsSecond">
-                    <h2>Perfect for a 9-night stay!</h2>
+                    <h2>Perfect for a {dayDiff}-night stay!</h2>
                     <p>
                       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                       Dignissimos vero fuga magni voluptatibus blanditiis. Quis!
                     </p>
                     <span>
-                      <strong style={{ marginRight: "5px" }}>$945</strong>
-                      (9 nights)
+                      <strong style={{ marginRight: "5px" }}>
+                        {/* Calculates total price to be paid */}$
+                        {options?.room * data?.cheapestPrice * dayDiff}
+                      </strong>
+                      ({dayDiff} nights)
                     </span>
                     <button>Reserve or Book Now!</button>
                   </div>

@@ -70,11 +70,11 @@ const Header = ({ type = "" }) => {
 
   // Handle search
   const handleSearch = () => {
+    dispatch({
+      type: "NEW_SEARCH",
+      payload: { city: destination, options, dates },
+    });
     if (destination !== "") {
-      dispatch({
-        type: "NEW_SEARCH",
-        payload: { city: destination, options, dates },
-      });
       navigate("/hotels", {
         state: {
           destination,
