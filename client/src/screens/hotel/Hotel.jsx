@@ -61,8 +61,6 @@ const Hotel = () => {
 
   const dayDiff = dayDifference(dates[0], dates[1]);
 
-  console.log(options);
-
   return (
     <div>
       <Nav />
