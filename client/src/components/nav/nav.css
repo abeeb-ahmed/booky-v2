@@ -48,6 +48,16 @@
   margin-right: 10px;
 }
 
+.logoutBtn {
+  margin-left: 10px;
+  background-color: transparent;
+  border: 1px solid lightgray;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .navLinks {
     display: none;

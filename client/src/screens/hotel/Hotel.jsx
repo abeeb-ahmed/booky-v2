@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -16,13 +16,18 @@ import "./hotel.css";
 import useFetch from "../../hooks/useFetch";
 import { useContext } from "react";
 import { SearchContext } from "../../context/search/searchContext";
+import { AuthContext } from "../../context/auth/authContext";
 
 const Hotel = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const { dates, options } = useContext(SearchContext);
   const location = useLocation().pathname;
   const id = location.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   //   Handle image modal open
   const handleClick = (i) => {
@@ -55,11 +60,23 @@ const Hotel = () => {
   const dayDifference = (date1, date2) => {
     if (dates) {
       const diff = Math.abs(date2.getTime()) - Math.abs(date1.getTime());
-      return Math.ceil(diff / milisecondsPerDay);
+      const diffCeil = Math.ceil(diff / milisecondsPerDay);
+      if (diffCeil === 0) {
+        return 1;
+      } else {
+        return diffCeil;
+      }
     } else return;
   };
 
   const dayDiff = dayDifference(dates[0], dates[1]);
+
+  const handleReserve = () => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+  };
 
   return (
     <div>
@@ -133,7 +150,9 @@ const Hotel = () => {
                       </strong>
                       ({dayDiff} nights)
                     </span>
-                    <button>Reserve or Book Now!</button>
+                    <button conClick={handleReserve}>
+                      Reserve or Book Now!
+                    </button>
                   </div>
                 </div>
               </div>

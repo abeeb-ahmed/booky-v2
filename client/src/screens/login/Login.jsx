@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth/authContext";
 
 import "./login.css";
@@ -11,18 +11,23 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const { dispatch, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  //   handle user login
+  const handleLogin = async (e) => {
     e.preventDefault();
+    if (!username || !password) return;
     try {
       dispatch({ type: "LOGIN_START" });
-      const res = axios.post("http://localhost:8800/api/auth/login", {
-        email,
+      const res = await axios.post("http://localhost:8800/api/auth/login", {
+        username,
         password,
       });
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      navigate("/");
     } catch (error) {
       dispatch({ type: "LOGIN_FAIL", payload: error });
+      alert(error);
     }
   };
   return (
@@ -48,7 +53,7 @@ const Login = () => {
             Login
           </button>
           <span style={{ textAlign: "center" }}>
-            Dont't have an account?{" "}
+            Dont't have an account?
             <Link to="/register" style={{ textDecoration: "none" }}>
               <span className="secondBtn">Register</span>
             </Link>
