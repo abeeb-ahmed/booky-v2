@@ -55,7 +55,7 @@ const Login = () => {
           <span style={{ textAlign: "center" }}>
             Dont't have an account?
             <Link to="/register" style={{ textDecoration: "none" }}>
-              <span className="secondBtn">Register</span>
+              <span className="secondBtn"> Register</span>
             </Link>
           </span>
           <Link to="/" style={{ textAlign: "center", textDecoration: "none" }}>

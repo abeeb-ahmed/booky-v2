@@ -60,8 +60,14 @@
 @media screen and (max-width: 768px) {
   .registerContainer form {
     padding: 30px;
+    max-width: 100%;
+    margin: 0 30px;
   }
   .registerContainer form span {
     font-size: 12px;
+  }
+
+  .registerContainer form input {
+    width: 100%;
   }
 }

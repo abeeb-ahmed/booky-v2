@@ -13,7 +13,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [phone, setPhone] = useState(null);
+  const [phone, setPhone] = useState("");
 
   // handle sign up and dispatch auth context
   const handleSignup = async (e) => {

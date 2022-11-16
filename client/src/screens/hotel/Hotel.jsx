@@ -150,7 +150,7 @@ const Hotel = () => {
                       </strong>
                       ({dayDiff} nights)
                     </span>
-                    <button conClick={handleReserve}>
+                    <button onClick={handleReserve}>
                       Reserve or Book Now!
                     </button>
                   </div>
