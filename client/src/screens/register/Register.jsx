@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/auth/authContext";
 import "./register.css";
 
 const Register = () => {
-  const { dispatch } = useContext(AuthContext);
+  const { dispatch, loading } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,18 +18,13 @@ const Register = () => {
   // handle sign up and dispatch auth context
   const handleSignup = async (e) => {
     e.preventDefault();
-
+    if (password !== confirmPassword) {
+      alert("Password do not match");
+      return;
+    }
     try {
       dispatch({ type: "LOGIN_START" });
-      if (
-        (username,
-        email,
-        password,
-        confirmPassword,
-        country,
-        city,
-        phone && password === confirmPassword)
-      ) {
+      if ((username, email, password, confirmPassword, country, city)) {
         const res = await axios.post(
           "http://localhost:8800/api/auth/register",
           {
@@ -106,7 +101,9 @@ const Register = () => {
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
-          <button onClick={(e) => handleSignup(e)}>Sign Up</button>
+          <button disabled={loading} onClick={(e) => handleSignup(e)}>
+            Sign Up
+          </button>
           <span style={{ textAlign: "center" }}>
             Already have an account?
             <Link to="/login" style={{ textDecoration: "none" }}>
