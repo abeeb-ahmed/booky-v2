@@ -6,7 +6,6 @@ import FeaturedPropertyList from "../../components/featuredPropertyList/Featured
 import "./home.css";
 import MailingList from "../../components/mailingList/MailingList";
 import Footer from "../../components/footer/Footer";
-import useFetch from "../../hooks/useFetch";
 
 const Home = () => {
   return (

@@ -1,0 +1,67 @@
+.register {
+  height: 100vh;
+  width: 100vw;
+  background-color: #e5e5e5;
+}
+.registerContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 30vw;
+}
+
+.registerContainer form .registerWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.registerContainer form h2 {
+  margin: 0;
+}
+
+.registerContainer form input {
+  padding: 10px;
+
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.registerContainer form button {
+  border: none;
+  border-radius: 5px;
+  background-color: #0071c2;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.registerContainer form span {
+  font-size: 14px;
+}
+
+.register .secondBtn {
+  color: #0071c2;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .registerContainer form {
+    padding: 30px;
+  }
+  .registerContainer form span {
+    font-size: 12px;
+  }
+}

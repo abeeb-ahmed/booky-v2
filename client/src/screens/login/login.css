@@ -1,0 +1,59 @@
+.login {
+  height: 100vh;
+  width: 100vw;
+  background-color: #e5e5e5;
+}
+.loginContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.loginContainer form h2 {
+  margin: 0;
+}
+
+.loginContainer form input {
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.loginContainer form button {
+  border: none;
+  border-radius: 5px;
+  background-color: #0071c2;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.loginContainer form span {
+  font-size: 14px;
+}
+
+.login .secondBtn {
+  color: #0071c2;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .loginContainer form {
+    padding: 30px;
+  }
+  .loginContainer form span {
+    font-size: 12px;
+  }
+}

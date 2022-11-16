@@ -17,10 +17,7 @@ const FeaturedPropertyList = () => {
               <div className="fpListItem" key={item._id}>
                 <img src="" alt="" />
                 <div className="fpListText">
-                  <h2>
-                    {item.name}
-                    {console.log(item.name)}
-                  </h2>
+                  <h2>{item.name}</h2>
                   <span>{item.city}</span>
                   <p>Starting from ${item.cheapestPrice}</p>
                 </div>
