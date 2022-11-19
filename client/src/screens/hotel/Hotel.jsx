@@ -17,6 +17,7 @@ import useFetch from "../../hooks/useFetch";
 import { useContext } from "react";
 import { SearchContext } from "../../context/search/searchContext";
 import { AuthContext } from "../../context/auth/authContext";
+import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const { user } = useContext(AuthContext);
@@ -72,9 +73,10 @@ const Hotel = () => {
   const dayDiff = dayDifference(dates[0], dates[1]);
 
   const handleReserve = () => {
-    if (!user) {
+    if (user) {
+      setOpenModal(true);
+    } else {
       navigate("/login");
-      return;
     }
   };
 
@@ -157,6 +159,7 @@ const Hotel = () => {
                 </div>
               </div>
             )}
+            {openModal && <Reserve />}
           </div>
           <MailingList />
           <Footer />
