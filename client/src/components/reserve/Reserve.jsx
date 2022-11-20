@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import useFetch from "../../hooks/useFetch";
 import "./reserve.css";
+import { SearchContext } from "../../context/search/searchContext";
 
 const Reserve = ({ hotelId, setOpenModal }) => {
+  const navigate = useNavigate();
+  const { dates } = useContext(SearchContext);
   const { data, loading } = useFetch(
     `http://localhost:8800/api/hotels/room/${hotelId}`
   );
@@ -21,6 +26,51 @@ const Reserve = ({ hotelId, setOpenModal }) => {
         ? [...selectedRooms, value]
         : selectedRooms.filter((item) => item !== value)
     );
+  };
+
+  //   Get dates range
+  const getDatesInRange = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const date = new Date(start.getTime());
+
+    const dates = [];
+
+    while (date <= end) {
+      dates.push(new Date(date).getTime());
+      date.setDate(date.getDate() + 1);
+    }
+    return dates;
+  };
+
+  const allDates = getDatesInRange(dates[0], dates[1]);
+
+  const isAvailable = (roomNumber) => {
+    const isFound = roomNumber.unavailableDates.some((date) =>
+      allDates.includes(new Date(date).getTime())
+    );
+
+    return !isFound;
+  };
+
+  //   handle reserve
+  const handleReserve = async () => {
+    try {
+      await Promise.all(
+        selectedRooms.map((roomId) => {
+          const res = axios.put(
+            `http://localhost:8800/api/rooms/availability/${roomId}`,
+            { dates: allDates }
+          );
+          return res;
+        })
+      );
+      setOpenModal(false);
+      navigate("/");
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -49,9 +99,10 @@ const Reserve = ({ hotelId, setOpenModal }) => {
                     <span>{item.number}</span>
                     <input
                       style={{ cursor: "pointer" }}
-                      onChange={(e) => handleCheck(e)}
+                      onChange={handleCheck}
                       type="checkbox"
                       value={item._id}
+                      disabled={!isAvailable(item)}
                     />
                   </div>
                 ))}
@@ -59,6 +110,7 @@ const Reserve = ({ hotelId, setOpenModal }) => {
             </div>
           );
         })}
+        <button onClick={handleReserve}>Reserve!</button>
       </div>
     </div>
   );

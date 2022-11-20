@@ -54,3 +54,26 @@
   right: 0;
   cursor: pointer;
 }
+
+.reserveContainer button {
+  width: 100%;
+  background-color: #0071c2;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .reserveContainer {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .rItem {
+    gap: 30px;
+  }
+}
