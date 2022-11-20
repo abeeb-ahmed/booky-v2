@@ -67,6 +67,19 @@
   cursor: pointer;
 }
 
+.reserveContainer button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.roomInput {
+  cursor: pointer;
+}
+
+.roomInput:disabled {
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 768px) {
   .reserveContainer {
     padding: 20px;

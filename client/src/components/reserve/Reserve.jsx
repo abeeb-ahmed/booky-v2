@@ -98,7 +98,7 @@ const Reserve = ({ hotelId, setOpenModal }) => {
                   <div key={item._id}>
                     <span>{item.number}</span>
                     <input
-                      style={{ cursor: "pointer" }}
+                      className="roomInput"
                       onChange={handleCheck}
                       type="checkbox"
                       value={item._id}
@@ -110,7 +110,9 @@ const Reserve = ({ hotelId, setOpenModal }) => {
             </div>
           );
         })}
-        <button onClick={handleReserve}>Reserve!</button>
+        <button disabled={selectedRooms.length === 0} onClick={handleReserve}>
+          Reserve!
+        </button>
       </div>
     </div>
   );
