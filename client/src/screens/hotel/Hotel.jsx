@@ -116,53 +116,56 @@ const Hotel = () => {
             {loading ? (
               "Loading..."
             ) : (
-              <div className="hotelWrapper">
-                <h1 className="hotelTitle">{data?.name}</h1>
-                <div className="hotelAddress">
-                  <FontAwesomeIcon icon={faLocationDot} />
-                  <span>{data?.address}</span>
-                </div>
-                <div className="hotelDesc">
-                  <span className="hotelDistance">{data?.distance}</span>
-                  <span className="hotelPriceHighlight">
-                    Book a stay over 20 dollars at this property and get free
-                    airport taxi
-                  </span>
-                </div>
-                <div className="hotelImages">
-                  {data.photos?.map((photo, i) => (
-                    <img onClick={() => handleClick(i)} src={photo} alt="" />
-                  ))}
-                </div>
-                <div className="hotelDetails">
-                  <div className="hDetailsFirst">
-                    <h2>{data?.title}</h2>
-                    <p>{data?.desc}</p>
+              <>
+                <div className="hotelWrapper">
+                  <h1 className="hotelTitle">{data?.name}</h1>
+                  <div className="hotelAddress">
+                    <FontAwesomeIcon icon={faLocationDot} />
+                    <span>{data?.address}</span>
                   </div>
-                  <div className="hDetailsSecond">
-                    <h2>Perfect for a {dayDiff}-night stay!</h2>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Dignissimos vero fuga magni voluptatibus blanditiis. Quis!
-                    </p>
-                    <span>
-                      <strong style={{ marginRight: "5px" }}>
-                        {/* Calculates total price to be paid */}$
-                        {options?.room * data?.cheapestPrice * dayDiff}
-                      </strong>
-                      ({dayDiff} nights)
+                  <div className="hotelDesc">
+                    <span className="hotelDistance">{data?.distance}</span>
+                    <span className="hotelPriceHighlight">
+                      Book a stay over 20 dollars at this property and get free
+                      airport taxi
                     </span>
-                    <button onClick={handleReserve}>
-                      Reserve or Book Now!
-                    </button>
+                  </div>
+                  <div className="hotelImages">
+                    {data.photos?.map((photo, i) => (
+                      <img onClick={() => handleClick(i)} src={photo} alt="" />
+                    ))}
+                  </div>
+                  <div className="hotelDetails">
+                    <div className="hDetailsFirst">
+                      <h2>{data?.title}</h2>
+                      <p>{data?.desc}</p>
+                    </div>
+                    <div className="hDetailsSecond">
+                      <h2>Perfect for a {dayDiff}-night stay!</h2>
+                      <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Dignissimos vero fuga magni voluptatibus
+                        blanditiis. Quis!
+                      </p>
+                      <span>
+                        <strong style={{ marginRight: "5px" }}>
+                          {/* Calculates total price to be paid */}$
+                          {options?.room * data?.cheapestPrice * dayDiff}
+                        </strong>
+                        ({dayDiff} nights)
+                      </span>
+                      <button onClick={handleReserve}>
+                        Reserve or Book Now!
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+                <MailingList />
+                <Footer />
+              </>
             )}
-            {openModal && <Reserve />}
+            {openModal && <Reserve hotelId={id} setOpenModal={setOpenModal} />}
           </div>
-          <MailingList />
-          <Footer />
         </>
       }
     </div>
