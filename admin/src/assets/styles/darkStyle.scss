@@ -1,0 +1,68 @@
+.dark {
+  background-color: #222;
+  color: rgb(156, 156, 156);
+  input,
+  select,
+  textarea {
+    color: rgb(156, 156, 156);
+  }
+
+  .icon {
+    color: #999;
+  }
+
+  .nav {
+    color: rgb(156, 156, 156);
+    border-color: #333;
+  }
+
+  .search {
+    border-color: gray;
+  }
+
+  .sidebar {
+    border-color: #333;
+
+    ul {
+      li {
+        cursor: pointer;
+        &:hover {
+          background-color: #333;
+        }
+      }
+    }
+
+    .sidebarItem {
+      .icon {
+        color: #777;
+      }
+    }
+
+    .sidebarTop {
+      border-color: gray;
+    }
+  }
+  .table {
+    background-color: #222;
+    color: rgb(156, 156, 156);
+
+    .tableCell {
+      color: rgb(156, 156, 156);
+      border-color: #333;
+    }
+  }
+
+  .dataTableContainer {
+    border-color: #333;
+    color: rgb(156, 156, 156);
+  }
+
+  .viewButton,
+  .deleteButton {
+    color: rgb(156, 156, 156);
+    border-color: rgb(156, 156, 156);
+  }
+  h2.title {
+    color: rgb(156, 156, 156);
+  }
+}

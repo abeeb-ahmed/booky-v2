@@ -1,0 +1,79 @@
+.single {
+  display: flex;
+
+  .singleContainer {
+    flex: 4;
+
+    .singleWrapper {
+      padding: 20px;
+
+      .singleTop {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+
+        .singleTopLeft {
+          position: relative;
+          border-radius: 10px;
+          padding: 20px;
+          flex: 2;
+          box-shadow: 2px 10px 21px -4px rgba(0, 0, 0, 0.14);
+          -webkit-box-shadow: 2px 10px 21px -4px rgba(0, 0, 0, 0.14);
+          -moz-box-shadow: 2px 10px 21px -4px rgba(0, 0, 0, 0.14);
+          .editBtn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #1863c2;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #1862c22d;
+          }
+        }
+
+        .singleTopRight {
+          flex: 3;
+        }
+      }
+      .singleBottom {
+        margin-top: 30px;
+      }
+    }
+
+    .infoContainer {
+      margin-top: 20px;
+      display: flex;
+      gap: 30px;
+      flex-direction: row;
+
+      .infoDetail {
+        h2 {
+          margin: 0;
+          font-size: 35px;
+        }
+
+        .infoDetailItem {
+          span {
+            color: #888;
+            &:nth-child(1) {
+              font-weight: bold;
+              color: #888;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    .title {
+      font-size: 20px;
+      color: lightgray;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.table {
+  .cellContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      width: 30px;
+      margin-right: 5px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  .status {
+    padding: 8px;
+    height: fit-content;
+    border-radius: 5px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    &.Approved {
+      color: green;
+      background-color: rgba(0, 128, 0, 0.116);
+    }
+    &.Pending {
+      color: goldenrod;
+      background-color: rgba(218, 165, 32, 0.185);
+    }
+  }
+}
