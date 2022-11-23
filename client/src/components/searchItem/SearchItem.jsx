@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ratingWord from "../../utils/ratingWord";
 import "./searchItem.css";
 
 const SearchItem = ({ data, removeBtn }) => {
+  const navigate = useNavigate();
+  const handleClick = (id) => {
+    navigate(`/hotels/${id}`);
+  };
   return (
     <div className="searchItem">
       <img
@@ -14,7 +18,9 @@ const SearchItem = ({ data, removeBtn }) => {
         alt=""
       />
       <div className="siDesc">
-        <h2 className="siTitle">{data.name}</h2>
+        <h2 className="siTitle" onClick={() => handleClick(data._id)}>
+          {data.name}
+        </h2>
         <span className="siDistance">{data.distance}</span>
         <span className="siTaxiOp">Free airport taxi</span>
         <span className="siSubtitle">{data.title}</span>

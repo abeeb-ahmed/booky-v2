@@ -5,6 +5,10 @@
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
+.fpListItem {
+  cursor: pointer;
+}
 .fpListItem img {
   object-fit: cover;
   width: 100%;

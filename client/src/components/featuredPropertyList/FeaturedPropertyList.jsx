@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import ratingWord from "../../utils/ratingWord";
 import "./featuredPropertyList.css";
 
 const FeaturedPropertyList = () => {
+  const navigate = useNavigate();
   const { data, loading } = useFetch(
     `http://localhost:8800/api/hotels?featured=true&limit=4`
   );
@@ -14,7 +16,11 @@ const FeaturedPropertyList = () => {
         <div className="fpList">
           {data.map((item) => {
             return (
-              <div className="fpListItem" key={item._id}>
+              <div
+                className="fpListItem"
+                key={item._id}
+                onClick={() => navigate(`/hotels/${item._id}`)}
+              >
                 <img src={item.photos[0]} alt="" />
                 <div className="fpListText">
                   <h2>{item.name}</h2>
