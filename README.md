@@ -21,7 +21,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-A fully functional booking sites for making reservations. It includes user authentication, an admin page to manage users, hotels and rooms.
+A fully functional booking sites for making reservations. It includes user authentication, an admin page to cretae and delete users, hotels and rooms.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -67,8 +67,16 @@ This is an example of how to list things you need to use the software and how to
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-
+### Login details
+* Admin
+username - admin
+password - admin
+* John Doe
+username - johndoe
+passowrd - johndoe
+*Mary Jane
+username - maryjane
+password - maryjane
 
 
 <!-- CONTRIBUTING -->
