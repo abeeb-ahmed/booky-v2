@@ -69,14 +69,14 @@ This is an example of how to list things you need to use the software and how to
 
 ### Login details
 #### Admin
-username - admin
-password - admin
+<p>username - admin</p>
+<p>password - admin</p?
 #### John Doe
-username - johndoe
-passowrd - johndoe
+<p>username - johndoe</p>
+<p>passowrd - johndoe</p>
 #### Mary Jane
-username - maryjane
-password - maryjane
+<p>username - maryjane</p>
+<p>password - maryjane</P>
 
 
 <!-- CONTRIBUTING -->
