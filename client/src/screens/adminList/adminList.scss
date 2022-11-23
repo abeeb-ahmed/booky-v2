@@ -1,0 +1,33 @@
+.adminList {
+  height: 100%;
+  display: flex;
+
+  .adminListContainer {
+    flex: 4;
+
+    .adminListWrapper {
+      padding: 20px;
+
+      .dataTableHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+          color: lightgray;
+          font-size: 20px;
+        }
+
+        button {
+          color: green;
+          height: fit-content;
+          padding: 8px 10px;
+          background-color: transparent;
+          border: 1px solid green;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

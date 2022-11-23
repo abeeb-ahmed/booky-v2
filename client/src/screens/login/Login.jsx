@@ -23,6 +23,7 @@ const Login = () => {
         username,
         password,
       });
+
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
     } catch (error) {
       dispatch({ type: "LOGIN_FAIL", payload: error });

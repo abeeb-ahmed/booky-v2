@@ -1,0 +1,38 @@
+.adminHome {
+  height: 100%;
+  display: flex;
+
+  .adminHomeContainer {
+    flex: 4;
+    height: 100%;
+
+    .widgets,
+    .charts {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .charts {
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+    }
+
+    .table {
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      justify-content: center;
+      padding: 20px;
+
+      .title {
+        color: #888;
+        font-size: 22px;
+        margin: 10px 0;
+      }
+    }
+  }
+}

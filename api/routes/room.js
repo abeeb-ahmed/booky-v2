@@ -12,14 +12,14 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 const router = Router();
 
 // CREATE ROOM
-router.post("/:hotelId", verifyAdmin, createRoom);
+router.post("/:hotelId", createRoom);
 
 //UPDATE
-router.put("/:id", verifyAdmin, updateRoom);
+router.put("/:id", updateRoom);
 router.put("/availability/:id", updateRoomAvailablility);
 
 //DELETE
-router.delete("/:id/:hotelId", verifyAdmin, deleteRoom);
+router.delete("/:id/:hotelId", deleteRoom);
 
 //GET
 router.get("/find/:id", getRoom);
