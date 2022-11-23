@@ -2,12 +2,16 @@ import { Link } from "react-router-dom";
 import ratingWord from "../../utils/ratingWord";
 import "./searchItem.css";
 
-const SearchItem = ({ data }) => {
+const SearchItem = ({ data, removeBtn }) => {
+  console.log(data);
   return (
     <div className="searchItem">
       <img
         className="siImg"
-        src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+        src={
+          data.photos[0] ||
+          "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+        }
         alt=""
       />
       <div className="siDesc">
@@ -29,9 +33,11 @@ const SearchItem = ({ data }) => {
         <div className="siDetailTexts">
           <span className="siPrice">${data.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <Link to={`/hotels/${data._id}`}>
-            <button className="siCheckButton">See availability</button>
-          </Link>
+          {!removeBtn && (
+            <Link to={`/hotels/${data._id}`}>
+              <button className="siCheckButton">See availability</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

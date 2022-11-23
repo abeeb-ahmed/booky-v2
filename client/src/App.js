@@ -25,6 +25,7 @@ import {
   roomColumns,
   userColumns,
 } from "./assets/tempData/datatableSource";
+import Search from "./screens/search/Search";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -47,6 +48,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/hotels" element={<Lists />} />
           <Route path="/hotels/:id" element={<Hotel />} />
+          <Route path="/hotels/category" element={<Search />} />
           {user?.isAdmin && (
             <Route path="/admin">
               <Route

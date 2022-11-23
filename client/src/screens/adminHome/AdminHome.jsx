@@ -61,7 +61,7 @@ const AdminHome = () => {
                 }}
               />
             }
-            title="Hotels"
+            title="Rooms"
             link="/admin/rooms"
           />
         </div>

@@ -49,13 +49,17 @@ export const getHotel = async (req, res, next) => {
 
 // get hotels
 export const getHotels = async (req, res, next) => {
-  const { min, max, city, ...others } = req.query;
+  const { min, max, city, type, ...others } = req.query;
 
   try {
     const hotels = await Hotel.find({
       ...others,
       city: {
         $regex: city || "", // remove case sensitivity in query
+        $options: "i" || "",
+      },
+      type: {
+        $regex: type || "", // remove case sensitivity in query
         $options: "i" || "",
       },
       cheapestPrice: { $gte: min || 1, $lte: max || 1000000000000000 },
