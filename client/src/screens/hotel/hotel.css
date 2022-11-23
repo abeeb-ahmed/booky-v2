@@ -42,6 +42,7 @@
 .hotelDetails {
   display: flex;
   margin-top: 30px;
+  gap: 20px;
 }
 .hotelDetails h2 {
   margin: 0;
@@ -51,6 +52,9 @@
 }
 .hDetailsFirst {
   flex: 3;
+}
+.hDetailsFirst p {
+  font-size: 16px;
 }
 .hDetailsSecond {
   flex: 1;

@@ -12,6 +12,7 @@ const New = ({ inputs, title }) => {
   const navigate = useNavigate();
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -19,13 +20,12 @@ const New = ({ inputs, title }) => {
 
   // send form to db
   const handleSubmit = async (e) => {
-    if (!info || file) {
-      return;
-    }
     e.preventDefault();
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "upload");
+    setSubmitLoading(true);
+    console.log(info);
     try {
       const uploadRes = await axios.post(
         "https://api.cloudinary.com/v1_1/abeebahmed/image/upload",
@@ -42,7 +42,9 @@ const New = ({ inputs, title }) => {
       navigate("/admin/users");
     } catch (error) {
       console.log(error);
+      alert("Make sure you fill in all inputs and add an image");
     }
+    setSubmitLoading(false);
   };
 
   return (
@@ -80,7 +82,6 @@ const New = ({ inputs, title }) => {
                     type="file"
                     id="file"
                     style={{ display: "none" }}
-                    required
                   />
                 </div>
                 <div className="formContainer">
@@ -93,13 +94,14 @@ const New = ({ inputs, title }) => {
                           placeholder={input?.placeholder}
                           id={input.id}
                           onChange={handleChange}
-                          required
                         />
                       </div>
                     );
                   })}
                 </div>
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={handleSubmit} disabled={submitLoading}>
+                  Submit
+                </button>
               </form>
             </div>
           </div>

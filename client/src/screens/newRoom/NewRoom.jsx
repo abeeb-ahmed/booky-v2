@@ -11,6 +11,7 @@ const NewRoom = ({ inputs, title }) => {
   const [rooms, setRooms] = useState([]);
   const [info, setInfo] = useState({});
   const [hotelId, setHotelId] = useState("");
+  const [submitLoading, setSubmitLoading] = useState(false);
   const { data, loading } = useFetch("http://localhost:8800/api/hotels");
 
   // handle form input change
@@ -21,11 +22,9 @@ const NewRoom = ({ inputs, title }) => {
   // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!info) {
-      return;
-    }
-    const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
 
+    const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
+    setSubmitLoading(true);
     try {
       const res = await axios.post(
         `http://localhost:8800/api/rooms/${hotelId}`,
@@ -37,7 +36,9 @@ const NewRoom = ({ inputs, title }) => {
       console.log(res);
     } catch (error) {
       console.log(error);
+      alert("Make sure you fill in all inputs");
     }
+    setSubmitLoading(false);
   };
 
   return (
@@ -62,7 +63,6 @@ const NewRoom = ({ inputs, title }) => {
                           placeholder={input?.placeholder}
                           id={input.id}
                           onChange={handleChange}
-                          required
                         />
                       </div>
                     );
@@ -73,7 +73,6 @@ const NewRoom = ({ inputs, title }) => {
                       placeholder="Give comma between room numbers"
                       onChange={(e) => setRooms(e.target.value)}
                       value={rooms}
-                      required
                     ></textarea>
                   </div>
                   <div className="formInput">
@@ -81,7 +80,6 @@ const NewRoom = ({ inputs, title }) => {
                     <select
                       id="hotelId"
                       onChange={(e) => setHotelId(e.target.value)}
-                      required
                     >
                       {loading
                         ? "Loading"
@@ -94,7 +92,9 @@ const NewRoom = ({ inputs, title }) => {
                     </select>
                   </div>
                 </div>
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={handleSubmit} disabled={submitLoading}>
+                  Submit
+                </button>
               </form>
             </div>
           </div>

@@ -66,7 +66,7 @@ const Hotel = () => {
   // find the difference between two dates in days. Date2 should be latest date
   const dayDifference = (date1, date2) => {
     if (dates) {
-      const diff = Math.abs(date2.getTime()) - Math.abs(date1.getTime());
+      const diff = Math.abs(date2?.getTime()) - Math.abs(date1?.getTime());
       const diffCeil = Math.ceil(diff / milisecondsPerDay);
       if (diffCeil === 0) {
         return 1;
@@ -154,7 +154,7 @@ const Hotel = () => {
                       <p>{data?.desc}</p>
                     </div>
                     <div className="hDetailsSecond">
-                      <h2>Perfect for a {dayDiff}-night stay!</h2>
+                      <h2>Perfect for a {dayDiff || 1}-night stay!</h2>
                       <p>
                         {data.name} is hosted and verified by booky.com. We can
                         guarantee a wonderful experience for the duration of
@@ -163,9 +163,10 @@ const Hotel = () => {
                       <span>
                         <strong style={{ marginRight: "5px" }}>
                           {/* Calculates total price to be paid */}$
-                          {options?.room * data?.cheapestPrice * dayDiff}
+                          {options?.room * data?.cheapestPrice * dayDiff ||
+                            data?.cheapestPrice}
                         </strong>
-                        ({dayDiff} nights)
+                        ({dayDiff || 1} nights)
                       </span>
                       <button onClick={handleReserve}>
                         Reserve or Book Now!

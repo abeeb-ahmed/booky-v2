@@ -21,7 +21,7 @@ const SearchItem = ({ data, removeBtn }) => {
         <h2 className="siTitle" onClick={() => handleClick(data._id)}>
           {data.name}
         </h2>
-        <span className="siDistance">{data.distance}</span>
+        <span className="siDistance">{data.distance}km from center</span>
         <span className="siTaxiOp">Free airport taxi</span>
         <span className="siSubtitle">{data.title}</span>
         <span className="siFeatures">{data.desc}</span>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 import Sidebar from "../../components/sidebar/Sidebar";
-import AdminNav from "../../components/adminNav/AdminNav";
+import Nav from "../../components/nav/Nav";
 
 import "./new.scss";
 import axios from "axios";
@@ -14,6 +14,7 @@ const NewHotel = ({ inputs, title }) => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const { loading, data } = useFetch("http://localhost:8800/api/rooms");
 
@@ -32,9 +33,7 @@ const NewHotel = ({ inputs, title }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!info || !files) {
-      return;
-    }
+    setSubmitLoading(true);
     try {
       const list = await Promise.all(
         Object.values(files).map(async (file) => {
@@ -42,7 +41,7 @@ const NewHotel = ({ inputs, title }) => {
           data.append("file", file);
           data.append("upload_preset", "upload");
           const uploadRes = await axios.post(
-            "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+            "https://api.cloudinary.com/v1_1/abeebahmed/image/upload",
             data
           );
 
@@ -61,13 +60,15 @@ const NewHotel = ({ inputs, title }) => {
       navigate("/admin/hotels");
     } catch (error) {
       console.log(error);
+      alert("Make sure you fill in all inputs and add images");
     }
+    setSubmitLoading(false);
   };
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <AdminNav />
+        <Nav />
         <div className="newWrapper">
           <div className="top">
             <h2>{title}</h2>
@@ -94,12 +95,11 @@ const NewHotel = ({ inputs, title }) => {
                   </label>
                   <input
                     onChange={(e) => setFiles(e.target.files)}
-                    multiple
                     accept="image/*"
                     type="file"
                     id="file"
                     style={{ display: "none" }}
-                    required
+                    multiple
                   />
                 </div>
                 <div className="formContainer">
@@ -112,38 +112,30 @@ const NewHotel = ({ inputs, title }) => {
                           placeholder={input?.placeholder}
                           id={input.id}
                           onChange={handleChange}
-                          required
                         />
                       </div>
                     );
                   })}
                   <div className="formInput">
                     <label>Featured</label>
-                    <select id="featured" onChange={handleChange} required>
+                    <select id="featured" onChange={handleChange}>
                       <option value={false}>No</option>
                       <option value={true}>Yes</option>
                     </select>
                   </div>
-                  <div className="formInput">
+                  <div className="formInput room">
                     <label>Rooms</label>
-                    <select
-                      multiple
-                      id="rooms"
-                      onChange={handleSelect}
-                      required
-                    >
+                    <select multiple id="rooms" onChange={handleSelect}>
                       {loading
                         ? "loading"
                         : data &&
                           data.map((item) => (
-                            <option key={item._id} value={item._id}>
-                              {item.title}
-                            </option>
+                            <option value={item._id}>{item.title}</option>
                           ))}
                     </select>
                   </div>
                 </div>
-                <button onClick={handleSubmit} disabled={loading}>
+                <button onClick={handleSubmit} disabled={submitLoading}>
                   Submit
                 </button>
               </form>
