@@ -19,6 +19,9 @@ const New = ({ inputs, title }) => {
 
   // send form to db
   const handleSubmit = async (e) => {
+    if (!info || file) {
+      return;
+    }
     e.preventDefault();
     const data = new FormData();
     data.append("file", file);
@@ -77,6 +80,7 @@ const New = ({ inputs, title }) => {
                     type="file"
                     id="file"
                     style={{ display: "none" }}
+                    required
                   />
                 </div>
                 <div className="formContainer">
@@ -89,6 +93,7 @@ const New = ({ inputs, title }) => {
                           placeholder={input?.placeholder}
                           id={input.id}
                           onChange={handleChange}
+                          required
                         />
                       </div>
                     );

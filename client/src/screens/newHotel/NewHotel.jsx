@@ -32,6 +32,9 @@ const NewHotel = ({ inputs, title }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!info || !files) {
+      return;
+    }
     try {
       const list = await Promise.all(
         Object.values(files).map(async (file) => {
@@ -96,6 +99,7 @@ const NewHotel = ({ inputs, title }) => {
                     type="file"
                     id="file"
                     style={{ display: "none" }}
+                    required
                   />
                 </div>
                 <div className="formContainer">
@@ -108,20 +112,26 @@ const NewHotel = ({ inputs, title }) => {
                           placeholder={input?.placeholder}
                           id={input.id}
                           onChange={handleChange}
+                          required
                         />
                       </div>
                     );
                   })}
                   <div className="formInput">
                     <label>Featured</label>
-                    <select id="featured" onChange={handleChange}>
+                    <select id="featured" onChange={handleChange} required>
                       <option value={false}>No</option>
                       <option value={true}>Yes</option>
                     </select>
                   </div>
                   <div className="formInput">
                     <label>Rooms</label>
-                    <select multiple id="rooms" onChange={handleSelect}>
+                    <select
+                      multiple
+                      id="rooms"
+                      onChange={handleSelect}
+                      required
+                    >
                       {loading
                         ? "loading"
                         : data &&
@@ -133,7 +143,9 @@ const NewHotel = ({ inputs, title }) => {
                     </select>
                   </div>
                 </div>
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={handleSubmit} disabled={loading}>
+                  Submit
+                </button>
               </form>
             </div>
           </div>

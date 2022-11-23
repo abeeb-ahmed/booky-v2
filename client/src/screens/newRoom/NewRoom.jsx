@@ -21,6 +21,9 @@ const NewRoom = ({ inputs, title }) => {
   // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!info) {
+      return;
+    }
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
 
     try {
@@ -59,6 +62,7 @@ const NewRoom = ({ inputs, title }) => {
                           placeholder={input?.placeholder}
                           id={input.id}
                           onChange={handleChange}
+                          required
                         />
                       </div>
                     );
@@ -69,6 +73,7 @@ const NewRoom = ({ inputs, title }) => {
                       placeholder="Give comma between room numbers"
                       onChange={(e) => setRooms(e.target.value)}
                       value={rooms}
+                      required
                     ></textarea>
                   </div>
                   <div className="formInput">
@@ -76,6 +81,7 @@ const NewRoom = ({ inputs, title }) => {
                     <select
                       id="hotelId"
                       onChange={(e) => setHotelId(e.target.value)}
+                      required
                     >
                       {loading
                         ? "Loading"

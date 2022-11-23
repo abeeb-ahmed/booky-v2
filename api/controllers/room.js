@@ -31,11 +31,17 @@ export const updateRoom = async (req, res, next) => {
 
 // delete room
 export const deleteRoom = async (req, res, next) => {
-  const hotelId = req.params.hotelId;
+  // const hotelId = req.params.hotelId;
+  // try {
+  //   await Room.findByIdAndDelete(req.params.id);
+  //   await Hotel.findByIdAndUpdate(hotelId, { $pull: { rooms: req.params.id } });
+  //   res.status(200).json("Room has been deleted.");
+  // } catch (error) {
+  //   next(error);
+  // }
   try {
     await Room.findByIdAndDelete(req.params.id);
-    await Hotel.findByIdAndUpdate(hotelId, { $pull: { rooms: req.params.id } });
-    res.status(200).json("Room has been deleted.");
+    res.status(200).json("Room deleted");
   } catch (error) {
     next(error);
   }

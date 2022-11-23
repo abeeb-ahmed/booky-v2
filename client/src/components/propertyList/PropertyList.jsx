@@ -19,6 +19,7 @@ const PropertyList = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       {loading ? (

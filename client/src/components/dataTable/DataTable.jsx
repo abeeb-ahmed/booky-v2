@@ -6,7 +6,7 @@ import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 
-export const DataTable = ({ columns, room }) => {
+export const DataTable = ({ columns, room = false }) => {
   const [list, setList] = useState([]);
   // get path
   const location = useLocation();
@@ -20,33 +20,13 @@ export const DataTable = ({ columns, room }) => {
   }, [data]);
 
   // delete handler
-  const handleDelete = (id) => {
-    const remove = async (id) => {
-      try {
-        await axios.delete(`http://localhost:8800/api/${path}/${id}`);
-        setList(list.filter((item) => item._id !== id));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    remove(id);
-  };
-
-  // delete room handler
-  const handleRoomDelete = async (id) => {
+  const handleDelete = async (id) => {
     try {
-      const res = await axios.get("http://localhost:8800/api/hotels");
-      const hotels = res.data;
-      await Promise.all(
-        hotels.map(async (hotel) => {
-          await axios.delete(
-            `http://localhost:8800/api/rooms/${id}/${hotel._id}`
-          );
-        })
-      );
+      const res = await axios.delete(`http://localhost:8800/api/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Action column to view and delete items
@@ -60,11 +40,7 @@ export const DataTable = ({ columns, room }) => {
           <div className="actionContainer">
             <div
               className="deleteButton"
-              onClick={() =>
-                room
-                  ? handleRoomDelete(params.row._id)
-                  : handleDelete(params.row._id)
-              }
+              onClick={() => handleDelete(params.row._id)}
             >
               Delete
             </div>

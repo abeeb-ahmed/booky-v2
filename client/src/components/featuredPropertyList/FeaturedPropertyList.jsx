@@ -15,7 +15,7 @@ const FeaturedPropertyList = () => {
           {data.map((item) => {
             return (
               <div className="fpListItem" key={item._id}>
-                <img src="" alt="" />
+                <img src={item.photos[0]} alt="" />
                 <div className="fpListText">
                   <h2>{item.name}</h2>
                   <span>{item.city}</span>

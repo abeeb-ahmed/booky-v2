@@ -3,7 +3,6 @@ import ratingWord from "../../utils/ratingWord";
 import "./searchItem.css";
 
 const SearchItem = ({ data, removeBtn }) => {
-  console.log(data);
   return (
     <div className="searchItem">
       <img

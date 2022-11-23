@@ -18,6 +18,7 @@ import { useContext } from "react";
 import { SearchContext } from "../../context/search/searchContext";
 import { AuthContext } from "../../context/auth/authContext";
 import Reserve from "../../components/reserve/Reserve";
+import { useEffect } from "react";
 
 const Hotel = () => {
   const { user } = useContext(AuthContext);
@@ -27,6 +28,8 @@ const Hotel = () => {
   const location = useLocation().pathname;
   const id = location.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
+  const [photosLastNumber, setPhotosLastNumber] = useState(0);
+
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
@@ -40,21 +43,24 @@ const Hotel = () => {
   const closeModal = () => {
     setOpen(false);
   };
+  const { data, loading } = useFetch(
+    `http://localhost:8800/api/hotels/find/${id}`
+  );
+  useEffect(() => {
+    setPhotosLastNumber(Number(data?.photos?.length) - 1);
+  }, [data]);
 
   //   Move images in modal
   const handleMove = (direction) => {
     let newSliderNumber;
     if (direction === "l") {
-      newSliderNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+      newSliderNumber = slideNumber === 0 ? photosLastNumber : slideNumber - 1;
     } else {
-      newSliderNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+      newSliderNumber = slideNumber === photosLastNumber ? 0 : slideNumber + 1;
     }
     setSlideNumber(newSliderNumber);
   };
 
-  const { data, loading } = useFetch(
-    `http://localhost:8800/api/hotels/find/${id}`
-  );
   const milisecondsPerDay = 86400000;
 
   // find the difference between two dates in days. Date2 should be latest date
@@ -124,7 +130,9 @@ const Hotel = () => {
                     <span>{data?.address}</span>
                   </div>
                   <div className="hotelDesc">
-                    <span className="hotelDistance">{data?.distance}</span>
+                    <span className="hotelDistance">
+                      {data?.distance}km from center
+                    </span>
                     <span className="hotelPriceHighlight">
                       Book a stay over 20 dollars at this property and get free
                       airport taxi
@@ -132,7 +140,12 @@ const Hotel = () => {
                   </div>
                   <div className="hotelImages">
                     {data.photos?.map((photo, i) => (
-                      <img onClick={() => handleClick(i)} src={photo} alt="" />
+                      <img
+                        onClick={() => handleClick(i)}
+                        src={photo}
+                        alt=""
+                        key={i}
+                      />
                     ))}
                   </div>
                   <div className="hotelDetails">
@@ -143,9 +156,9 @@ const Hotel = () => {
                     <div className="hDetailsSecond">
                       <h2>Perfect for a {dayDiff}-night stay!</h2>
                       <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Dignissimos vero fuga magni voluptatibus
-                        blanditiis. Quis!
+                        {data.name} is hosted and verified by booky.com. We can
+                        guarantee a wonderful experience for the duration of
+                        your stay.
                       </p>
                       <span>
                         <strong style={{ marginRight: "5px" }}>
