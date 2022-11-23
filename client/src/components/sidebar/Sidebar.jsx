@@ -4,21 +4,16 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import StoreIcon from "@mui/icons-material/Store";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
-import SettingsIcon from "@mui/icons-material/Settings";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 
-import logo from "./../../assets/images/myadmin.png";
 import "./sidebar.scss";
 import { DarkModeContext } from "../../context/darkMode/darkModeContext";
+import { AuthContext } from "../../context/auth/authContext";
 
 const Sidebar = () => {
-  const { dispatch } = useContext(DarkModeContext);
+  const { modeDispatch } = useContext(DarkModeContext);
+  const { dispatch } = useContext(AuthContext);
 
   return (
     <div className="sidebar">
@@ -67,11 +62,10 @@ const Sidebar = () => {
             </Link>
 
             <p>USER</p>
-            <li className="sidebarItem">
-              <AccountCircleOutlinedIcon className="icon" />
-              <span>Profile</span>
-            </li>
-            <li className="sidebarItem">
+            <li
+              className="sidebarItem"
+              onClick={() => dispatch({ type: "LOGOUT" })}
+            >
               <ExitToAppOutlinedIcon className="icon" />
               <span>Logout</span>
             </li>
@@ -81,11 +75,11 @@ const Sidebar = () => {
           <p>THEME</p>
           <div className="colorOptions">
             <div
-              onClick={() => dispatch({ type: "LIGHT" })}
+              onClick={() => modeDispatch({ type: "LIGHT" })}
               className="colorOption"
             ></div>
             <div
-              onClick={() => dispatch({ type: "DARK" })}
+              onClick={() => modeDispatch({ type: "DARK" })}
               className="colorOption"
             ></div>
           </div>
