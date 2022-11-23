@@ -68,13 +68,13 @@ This is an example of how to list things you need to use the software and how to
 
 
 ### Login details
-* Admin
+#### Admin
 username - admin
 password - admin
-* John Doe
+#### John Doe
 username - johndoe
 passowrd - johndoe
-*Mary Jane
+#### Mary Jane
 username - maryjane
 password - maryjane
 
