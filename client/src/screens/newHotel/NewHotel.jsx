@@ -2,7 +2,7 @@ import { useState } from "react";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 import Sidebar from "../../components/sidebar/Sidebar";
-import Nav from "../../components/nav/Nav";
+import AdminNav from "../../components/adminNav/AdminNav";
 
 import "./new.scss";
 import axios from "axios";
@@ -34,16 +34,16 @@ const NewHotel = ({ inputs, title }) => {
     e.preventDefault();
     try {
       const list = await Promise.all(
-        Object.values(files).map((file) => {
+        Object.values(files).map(async (file) => {
           const data = new FormData();
           data.append("file", file);
           data.append("upload_preset", "upload");
-          const uploadRes = axios.post(
-            "https://api.cloudinary.com/v1_1/abeebahmed/image/upload",
+          const uploadRes = await axios.post(
+            "https://api.cloudinary.com/v1_1/lamadev/image/upload",
             data
           );
-          const { url } = uploadRes;
 
+          const { url } = uploadRes.data;
           return url;
         })
       );
@@ -64,7 +64,7 @@ const NewHotel = ({ inputs, title }) => {
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Nav />
+        <AdminNav />
         <div className="newWrapper">
           <div className="top">
             <h2>{title}</h2>
@@ -126,7 +126,9 @@ const NewHotel = ({ inputs, title }) => {
                         ? "loading"
                         : data &&
                           data.map((item) => (
-                            <option value={item._id}>{item.title}</option>
+                            <option key={item._id} value={item._id}>
+                              {item.title}
+                            </option>
                           ))}
                     </select>
                   </div>

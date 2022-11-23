@@ -2,7 +2,7 @@ import { useState } from "react";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 import Sidebar from "../../components/sidebar/Sidebar";
-import Nav from "../../components/nav/Nav";
+import AdminNav from "../../components/adminNav/AdminNav";
 
 import "./new.scss";
 import axios from "axios";
@@ -35,10 +35,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      const res = await axios.post(
-        "http://localhost:8800/api/auth/register",
-        newUser
-      );
+      await axios.post("http://localhost:8800/api/auth/register", newUser);
       navigate("/admin/users");
     } catch (error) {
       console.log(error);
@@ -49,7 +46,7 @@ const New = ({ inputs, title }) => {
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Nav />
+        <AdminNav />
         <div className="newWrapper">
           <div className="top">
             <h2>{title}</h2>

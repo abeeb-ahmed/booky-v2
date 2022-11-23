@@ -7,13 +7,11 @@ import Login from "./screens/login/Login";
 import Register from "./screens/register/Register";
 import AdminHome from "./screens/adminHome/AdminHome";
 import AdminList from "./screens/adminList/AdminList";
-import Single from "./screens/single/Single";
 import New from "./screens/new/New";
 import NewRoom from "./screens/newRoom/NewRoom";
 import NewHotel from "./screens/newHotel/NewHotel";
 import {
   hotelInputs,
-  productInputs,
   roomInputs,
   userInputs,
 } from "./assets/tempData/formDataSource";
@@ -68,14 +66,7 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-                <Route
-                  path=":userId"
-                  element={
-                    <ProtectedRoute>
-                      <Single />
-                    </ProtectedRoute>
-                  }
-                />
+
                 <Route
                   path="new"
                   element={
@@ -94,19 +85,12 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-                <Route
-                  path=":hotelId"
-                  element={
-                    <ProtectedRoute>
-                      <Single />
-                    </ProtectedRoute>
-                  }
-                />
+
                 <Route
                   path="new"
                   element={
                     <ProtectedRoute>
-                      <NewHotel inputs={hotelInputs} title="Add New Hotels" />
+                      <NewHotel inputs={hotelInputs} title="Add New Hotel" />
                     </ProtectedRoute>
                   }
                 />
@@ -116,23 +100,16 @@ function App() {
                   index
                   element={
                     <ProtectedRoute>
-                      <AdminList columns={roomColumns} title="Rooms" />
+                      <AdminList columns={roomColumns} title="Rooms" room />
                     </ProtectedRoute>
                   }
                 />
-                <Route
-                  path=":roomId"
-                  element={
-                    <ProtectedRoute>
-                      <Single />
-                    </ProtectedRoute>
-                  }
-                />
+
                 <Route
                   path="new"
                   element={
                     <ProtectedRoute>
-                      <NewRoom inputs={roomInputs} title="Add New Rooms" />
+                      <NewRoom inputs={roomInputs} title="Add New Room" />
                     </ProtectedRoute>
                   }
                 />

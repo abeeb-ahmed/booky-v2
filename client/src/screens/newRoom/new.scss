@@ -48,10 +48,11 @@
                 justify-content: center;
               }
             }
-            .formContainer {
+            .formContainer .room {
               display: flex;
               flex-wrap: wrap;
               gap: 20px;
+              padding: 20px;
 
               .formInput {
                 width: 40%;

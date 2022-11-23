@@ -1,50 +1,54 @@
 import { useState } from "react";
-import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 import Sidebar from "../../components/sidebar/Sidebar";
-import Nav from "../../components/nav/Nav";
+import AdminNav from "../../components/adminNav/AdminNav";
 
 import "./new.scss";
+import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 const NewRoom = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+  const [rooms, setRooms] = useState([]);
+  const [info, setInfo] = useState({});
+  const [hotelId, setHotelId] = useState("");
+  const { data, loading } = useFetch("http://localhost:8800/api/hotels");
+
+  // handle form input change
+  const handleChange = (e) => {
+    setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  // handle submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
+
+    try {
+      const res = await axios.post(
+        `http://localhost:8800/api/rooms/${hotelId}`,
+        {
+          ...info,
+          roomNumbers,
+        }
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Nav />
+        <AdminNav />
         <div className="newWrapper">
           <div className="top">
             <h2>{title}</h2>
           </div>
           <div className="bottom">
-            <div className="left">
-              <img
-                src={
-                  file
-                    ? URL.createObjectURL(file)
-                    : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                }
-                alt="avatar"
-              />
-            </div>
             <div className="right">
               <form>
-                <div className="imgUpload">
-                  <label htmlFor="file">
-                    Add image:
-                    <DriveFolderUploadIcon
-                      style={{ cursor: "pointer", marginLeft: 5 }}
-                    />
-                  </label>
-                  <input
-                    onChange={(e) => setFile(e.target.files[0])}
-                    accept="image/*"
-                    type="file"
-                    id="file"
-                    style={{ display: "none" }}
-                  />
-                </div>
                 <div className="formContainer">
                   {inputs.map((input) => {
                     return (
@@ -53,12 +57,38 @@ const NewRoom = ({ inputs, title }) => {
                         <input
                           type={input.type}
                           placeholder={input?.placeholder}
+                          id={input.id}
+                          onChange={handleChange}
                         />
                       </div>
                     );
                   })}
+                  <div className="formInput">
+                    <label>Rooms</label>
+                    <textarea
+                      placeholder="Give comma between room numbers"
+                      onChange={(e) => setRooms(e.target.value)}
+                      value={rooms}
+                    ></textarea>
+                  </div>
+                  <div className="formInput">
+                    <label>Choose a hotel: </label>
+                    <select
+                      id="hotelId"
+                      onChange={(e) => setHotelId(e.target.value)}
+                    >
+                      {loading
+                        ? "Loading"
+                        : data &&
+                          data.map((hotel) => (
+                            <option key={hotel._id} value={hotel._id}>
+                              {hotel.title}
+                            </option>
+                          ))}
+                    </select>
+                  </div>
                 </div>
-                <button>Submit</button>
+                <button onClick={handleSubmit}>Submit</button>
               </form>
             </div>
           </div>

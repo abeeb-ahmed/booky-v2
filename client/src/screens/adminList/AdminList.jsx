@@ -5,7 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import AdminNav from "../../components/adminNav/AdminNav";
 import { DataTable } from "../../components/dataTable/DataTable";
 
-const AdminList = ({ title, columns }) => {
+const AdminList = ({ title, columns, room }) => {
   return (
     <div className="adminList">
       <Sidebar />
@@ -18,7 +18,7 @@ const AdminList = ({ title, columns }) => {
               <button>Add New</button>
             </Link>
           </div>
-          <DataTable columns={columns} />
+          <DataTable columns={columns} room />
         </div>
       </div>
     </div>
