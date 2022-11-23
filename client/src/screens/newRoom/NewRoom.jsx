@@ -6,8 +6,10 @@ import AdminNav from "../../components/adminNav/AdminNav";
 import "./new.scss";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const NewRoom = ({ inputs, title }) => {
+  const navigate = useNavigate();
   const [rooms, setRooms] = useState([]);
   const [info, setInfo] = useState({});
   const [hotelId, setHotelId] = useState("");
@@ -33,7 +35,7 @@ const NewRoom = ({ inputs, title }) => {
           roomNumbers,
         }
       );
-      console.log(res);
+      navigate("/admin/rooms");
     } catch (error) {
       console.log(error);
       alert("Make sure you fill in all inputs");
@@ -86,7 +88,7 @@ const NewRoom = ({ inputs, title }) => {
                         : data &&
                           data.map((hotel) => (
                             <option key={hotel._id} value={hotel._id}>
-                              {hotel.title}
+                              {hotel.name}
                             </option>
                           ))}
                     </select>

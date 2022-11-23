@@ -145,6 +145,7 @@ const Hotel = () => {
                         src={photo}
                         alt=""
                         key={i}
+                        style={{ cursor: "pointer" }}
                       />
                     ))}
                   </div>
@@ -154,7 +155,7 @@ const Hotel = () => {
                       <p>{data?.desc}</p>
                     </div>
                     <div className="hDetailsSecond">
-                      <h2>Perfect for a {dayDiff || 1}-night stay!</h2>
+                      <h2>Property verification</h2>
                       <p>
                         {data.name} is hosted and verified by booky.com. We can
                         guarantee a wonderful experience for the duration of

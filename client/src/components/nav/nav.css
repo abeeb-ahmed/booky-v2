@@ -102,4 +102,11 @@
     width: 100vw;
     z-index: 900;
   }
+  .mobileNavBtns {
+    display: flex;
+    align-items: center;
+  }
+  .logoutBtn:nth-child(1) {
+    margin-left: 0;
+  }
 }

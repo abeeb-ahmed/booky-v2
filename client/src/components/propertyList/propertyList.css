@@ -12,7 +12,11 @@
   overflow: hidden;
   cursor: pointer;
 }
-
+.proprtyListItem img:hover {
+  transform: scale(1.02);
+  transition: ease 0.3;
+  opacity: 0.8;
+}
 .proprtyListItem img {
   object-fit: cover;
   height: 150px;

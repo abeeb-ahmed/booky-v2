@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -7,6 +7,7 @@ import "./nav.css";
 import { AuthContext } from "../../context/auth/authContext";
 
 const Nav = () => {
+  const navigate = useNavigate();
   const { user, dispatch } = useContext(AuthContext);
   const [toggled, setToggled] = useState(false); // Toggle mobile navbar
 
@@ -38,6 +39,14 @@ const Nav = () => {
               <button className="logoutBtn" onClick={handleLogout}>
                 Logout
               </button>
+              {user.isAdmin && (
+                <button
+                  className="logoutBtn"
+                  onClick={() => navigate("/admin")}
+                >
+                  Admin page
+                </button>
+              )}
             </span>
           )}
         </ul>
@@ -63,12 +72,22 @@ const Nav = () => {
                   </Link>
                 </>
               ) : (
-                <span>
-                  Welcome {user.username}
-                  <button className="logoutBtn" onClick={handleLogout}>
-                    Logout
-                  </button>
-                </span>
+                <div classname="mobileNavBtns">
+                  <p>Welcome {user.username}</p>
+                  <div className="button">
+                    <button className="logoutBtn" onClick={handleLogout}>
+                      Logout
+                    </button>
+                    {user.isAdmin && (
+                      <button
+                        className="logoutBtn"
+                        onClick={() => navigate("/admin")}
+                      >
+                        Admin page
+                      </button>
+                    )}
+                  </div>
+                </div>
               )}
             </div>
           </ul>

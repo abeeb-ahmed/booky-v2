@@ -1,5 +1,8 @@
 .new {
   display: flex;
+  input::placeholder {
+    color: #e5e5e5;
+  }
 
   .newContainer {
     flex: 4;

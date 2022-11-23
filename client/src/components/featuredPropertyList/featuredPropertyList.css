@@ -15,6 +15,12 @@
   height: 250px;
 }
 
+.fpListItem img:hover {
+  transform: scale(1.02);
+  transition: ease 0.3;
+  opacity: 0.8;
+}
+
 .fpListItem p {
   font-weight: 500;
 }

@@ -23,6 +23,12 @@
   height: 100%;
 }
 
+.featuredItem img:hover {
+  transform: scale(1.02);
+  transition: ease 0.3;
+  opacity: 0.8;
+}
+
 .featuredTitles {
   position: absolute;
   left: 20px;
