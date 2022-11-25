@@ -12,7 +12,7 @@ const Reserve = ({ hotelId, setOpenModal }) => {
   const navigate = useNavigate();
   const { dates } = useContext(SearchContext);
   const { data, loading } = useFetch(
-    `http://localhost:8800/api/hotels/room/${hotelId}`
+    `https://booky-web-app.herokuapp.com/api/hotels/room/${hotelId}`
   );
 
   const [selectedRooms, setSelectedRooms] = useState([]);
@@ -60,7 +60,7 @@ const Reserve = ({ hotelId, setOpenModal }) => {
       await Promise.all(
         selectedRooms.map((roomId) => {
           const res = axios.put(
-            `http://localhost:8800/api/rooms/availability/${roomId}`,
+            `https://booky-web-app.herokuapp.com/api/rooms/availability/${roomId}`,
             { dates: allDates }
           );
           return res;

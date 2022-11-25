@@ -9,9 +9,9 @@ import "./adminHome.scss";
 import useFetch from "../../hooks/useFetch";
 
 const AdminHome = () => {
-  const hotelsData = useFetch("http://localhost:8800/api/hotels");
-  const roomsData = useFetch("http://localhost:8800/api/rooms");
-  const usersData = useFetch("http://localhost:8800/api/users");
+  const hotelsData = useFetch("https://booky-web-app.herokuapp.com/api/hotels");
+  const roomsData = useFetch("https://booky-web-app.herokuapp.com/api/rooms");
+  const usersData = useFetch("https://booky-web-app.herokuapp.com/api/users");
   const usersLength = usersData.data.length;
   const roomsLength = roomsData.data.length;
   const hotelsLength = hotelsData.data.length;

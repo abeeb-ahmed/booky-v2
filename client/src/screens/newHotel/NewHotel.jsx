@@ -16,7 +16,9 @@ const NewHotel = ({ inputs, title }) => {
   const [rooms, setRooms] = useState([]);
   const [submitLoading, setSubmitLoading] = useState(false);
 
-  const { loading, data } = useFetch("http://localhost:8800/api/rooms");
+  const { loading, data } = useFetch(
+    "https://booky-web-app.herokuapp.com/api/rooms"
+  );
 
   // handle form input change
   const handleChange = (e) => {
@@ -56,7 +58,10 @@ const NewHotel = ({ inputs, title }) => {
         photos: list,
       };
 
-      await axios.post("http://localhost:8800/api/hotels", newHotel);
+      await axios.post(
+        "https://booky-web-app.herokuapp.com/api/hotels",
+        newHotel
+      );
       navigate("/admin/hotels");
     } catch (error) {
       console.log(error);

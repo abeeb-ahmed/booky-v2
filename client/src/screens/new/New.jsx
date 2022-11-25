@@ -38,7 +38,10 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("http://localhost:8800/api/auth/register", newUser);
+      await axios.post(
+        "https://booky-web-app.herokuapp.com/api/auth/register",
+        newUser
+      );
       navigate("/admin/users");
     } catch (error) {
       console.log(error);

@@ -19,10 +19,13 @@ const Login = () => {
     if (!username || !password) return;
     try {
       dispatch({ type: "LOGIN_START" });
-      const res = await axios.post("http://localhost:8800/api/auth/login", {
-        username,
-        password,
-      });
+      const res = await axios.post(
+        "https://booky-web-app.herokuapp.com/api/auth/login",
+        {
+          username,
+          password,
+        }
+      );
 
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
     } catch (error) {

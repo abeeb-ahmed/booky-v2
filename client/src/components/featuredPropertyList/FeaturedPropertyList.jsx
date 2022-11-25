@@ -6,7 +6,7 @@ import "./featuredPropertyList.css";
 const FeaturedPropertyList = () => {
   const navigate = useNavigate();
   const { data, loading } = useFetch(
-    `http://localhost:8800/api/hotels?featured=true&limit=4`
+    `https://booky-web-app.herokuapp.com/api/hotels?featured=true&limit=4`
   );
   return (
     <>

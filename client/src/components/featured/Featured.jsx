@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 const Featured = () => {
   const navigate = useNavigate();
   const { data, loading } = useFetch(
-    "http://localhost:8800/api/hotels/countByCity?cities=Lagos,Berlin,London"
+    "https://booky-web-app.herokuapp.com/api/hotels/countByCity?cities=Lagos,Berlin,London"
   );
   // handle click
   const handleClick = async (city) => {
     const { data } = await axios.get(
-      `http://localhost:8800/api/hotels?city=${city}`
+      `https://booky-web-app.herokuapp.com/api/hotels?city=${city}`
     );
     navigate("/hotels/category", { state: data });
   };

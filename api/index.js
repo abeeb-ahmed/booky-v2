@@ -9,7 +9,7 @@ import usersRoute from "./routes/users.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/room.js";
 
-const port = 8800;
+const port = process.env.PORT || 5000;
 
 const app = express();
 dotenv.config();
@@ -36,6 +36,11 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
 
 // error handling
 app.use((err, req, res, next) => {

@@ -26,7 +26,7 @@ const Register = () => {
       dispatch({ type: "LOGIN_START" });
       if ((username, email, password, confirmPassword, country, city)) {
         const res = await axios.post(
-          "http://localhost:8800/api/auth/register",
+          "https://booky-web-app.herokuapp.com/api/auth/register",
           {
             username,
             email,

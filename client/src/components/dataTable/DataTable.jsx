@@ -13,7 +13,7 @@ export const DataTable = ({ columns, room = false }) => {
   const path = location.pathname.split("/")[2];
 
   // fetch data
-  const { data } = useFetch(`http://localhost:8800/api/${path}`);
+  const { data } = useFetch(`https://booky-web-app.herokuapp.com/api/${path}`);
 
   useEffect(() => {
     setList(data);
@@ -22,7 +22,9 @@ export const DataTable = ({ columns, room = false }) => {
   // delete handler
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:8800/api/${path}/${id}`);
+      const res = await axios.delete(
+        `https://booky-web-app.herokuapp.com/api/${path}/${id}`
+      );
       setList(list.filter((item) => item._id !== id));
     } catch (error) {
       console.log(error);
