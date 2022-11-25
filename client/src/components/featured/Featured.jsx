@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 const Featured = () => {
   const navigate = useNavigate();
   const { data, loading } = useFetch(
-    "https://booky-web-app.onrender.com/api/hotels/countByCity?cities=Lagos,Berlin,London"
+    "https://booky-web-api.onrender.com/api/hotels/countByCity?cities=Lagos,Berlin,London"
   );
   // handle click
   const handleClick = async (city) => {
     const { data } = await axios.get(
-      `https://booky-web-app.onrender.com/api/hotels?city=${city}`
+      `https://booky-web-api.onrender.com/api/hotels?city=${city}`
     );
     navigate("/hotels/category", { state: data });
   };

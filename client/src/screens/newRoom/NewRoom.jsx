@@ -15,7 +15,7 @@ const NewRoom = ({ inputs, title }) => {
   const [hotelId, setHotelId] = useState("");
   const [submitLoading, setSubmitLoading] = useState(false);
   const { data, loading } = useFetch(
-    "https://booky-web-app.onrender.com/api/hotels"
+    "https://booky-web-api.onrender.com/api/hotels"
   );
 
   // handle form input change
@@ -31,7 +31,7 @@ const NewRoom = ({ inputs, title }) => {
     setSubmitLoading(true);
     try {
       const res = await axios.post(
-        `https://booky-web-app.onrender.com/api/rooms/${hotelId}`,
+        `https://booky-web-api.onrender.com/api/rooms/${hotelId}`,
         {
           ...info,
           roomNumbers,

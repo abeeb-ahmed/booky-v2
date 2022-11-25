@@ -26,7 +26,7 @@ const Register = () => {
       dispatch({ type: "LOGIN_START" });
       if ((username, email, password, confirmPassword, country, city)) {
         const res = await axios.post(
-          "https://booky-web-app.onrender.com/api/auth/register",
+          "https://booky-web-api.onrender.com/api/auth/register",
           {
             username,
             email,

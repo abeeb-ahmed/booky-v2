@@ -6,13 +6,13 @@ import "./propertyList.css";
 const PropertyList = () => {
   const navigate = useNavigate();
   const { data, loading } = useFetch(
-    "https://booky-web-app.onrender.com/api/hotels/countByType"
+    "https://booky-web-api.onrender.com/api/hotels/countByType"
   );
 
   const handleClick = async (type) => {
     try {
       const { data } = await axios.get(
-        `https://booky-web-app.onrender.com/api/hotels?type=${type}`
+        `https://booky-web-api.onrender.com/api/hotels?type=${type}`
       );
       navigate("/hotels/category", { state: data });
     } catch (error) {

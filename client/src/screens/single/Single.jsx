@@ -9,7 +9,7 @@ const Single = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[3];
   const { data } = useFetch(
-    `https://booky-web-app.onrender.com/api/users/${id}`
+    `https://booky-web-api.onrender.com/api/users/${id}`
   );
   console.log(data);
 
