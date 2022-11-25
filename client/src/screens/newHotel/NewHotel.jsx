@@ -17,7 +17,7 @@ const NewHotel = ({ inputs, title }) => {
   const [submitLoading, setSubmitLoading] = useState(false);
 
   const { loading, data } = useFetch(
-    "https://booky-web-app.herokuapp.com/api/rooms"
+    "https://booky-web-app.onrender.com/api/rooms"
   );
 
   // handle form input change
@@ -59,7 +59,7 @@ const NewHotel = ({ inputs, title }) => {
       };
 
       await axios.post(
-        "https://booky-web-app.herokuapp.com/api/hotels",
+        "https://booky-web-app.onrender.com/api/hotels",
         newHotel
       );
       navigate("/admin/hotels");

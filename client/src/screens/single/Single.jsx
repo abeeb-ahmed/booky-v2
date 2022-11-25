@@ -1,15 +1,16 @@
 import "./single.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import AdminNav from "../../components/adminNav/AdminNav";
-import Chart from "../../components/chart/Chart";
-import TableList from "../../components/tableList/TableList";
+
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 
 const Single = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[3];
-  const { data } = useFetch(`http://localhost:8800/api/users/${id}`);
+  const { data } = useFetch(
+    `https://booky-web-app.onrender.com/api/users/${id}`
+  );
   console.log(data);
 
   return (

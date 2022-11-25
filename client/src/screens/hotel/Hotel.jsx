@@ -44,7 +44,7 @@ const Hotel = () => {
     setOpen(false);
   };
   const { data, loading } = useFetch(
-    `https://booky-web-app.herokuapp.com/api/hotels/find/${id}`
+    `https://booky-web-app.onrender.com/api/hotels/find/${id}`
   );
   useEffect(() => {
     setPhotosLastNumber(Number(data?.photos?.length) - 1);

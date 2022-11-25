@@ -39,7 +39,7 @@ const New = ({ inputs, title }) => {
       };
 
       await axios.post(
-        "https://booky-web-app.herokuapp.com/api/auth/register",
+        "https://booky-web-app.onrender.com/api/auth/register",
         newUser
       );
       navigate("/admin/users");

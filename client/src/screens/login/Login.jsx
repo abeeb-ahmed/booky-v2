@@ -20,7 +20,7 @@ const Login = () => {
     try {
       dispatch({ type: "LOGIN_START" });
       const res = await axios.post(
-        "https://booky-web-app.herokuapp.com/api/auth/login",
+        "https://booky-web-app.onrender.com/api/auth/login",
         {
           username,
           password,

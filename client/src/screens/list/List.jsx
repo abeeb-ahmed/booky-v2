@@ -68,7 +68,7 @@ const List = () => {
 
   // fetch hotels from db
   const { loading, data, reFetch } = useFetch(
-    `https://booky-web-app.herokuapp.com/api/hotels?city=${destination}&min=${minPrice}&max=${maxPrice}`
+    `https://booky-web-app.onrender.com/api/hotels?city=${destination}&min=${minPrice}&max=${maxPrice}`
   );
 
   // handle search
@@ -78,7 +78,7 @@ const List = () => {
       payload: { city: destination, dates, options },
     });
     reFetch(
-      `https://booky-web-app.herokuapp.com/api/hotels?city=${destination}&min=${minPrice}&max=${maxPrice}`
+      `https://booky-web-app.onrender.com/api/hotels?city=${destination}&min=${minPrice}&max=${maxPrice}`
     );
   };
 

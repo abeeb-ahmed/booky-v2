@@ -19,7 +19,7 @@ import "./assets/styles/darkStyle.scss";
 import "./App.css";
 import { useContext } from "react";
 import { AuthContext } from "./context/auth/authContext";
-import { DarkModeContext } from "../../client/src/context/darkMode/darkModeContext";
+import { DarkModeContext } from "./context/darkMode/darkModeContext";
 import {
   hotelColumns,
   roomColumns,

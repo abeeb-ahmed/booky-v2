@@ -12,7 +12,7 @@ const Reserve = ({ hotelId, setOpenModal }) => {
   const navigate = useNavigate();
   const { dates } = useContext(SearchContext);
   const { data, loading } = useFetch(
-    `https://booky-web-app.herokuapp.com/api/hotels/room/${hotelId}`
+    `https://booky-web-app.onrender.com/api/hotels/room/${hotelId}`
   );
 
   const [selectedRooms, setSelectedRooms] = useState([]);
