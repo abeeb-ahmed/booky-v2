@@ -6,7 +6,7 @@
     <a href="https://github.com/abeeb-ahmed/booky-v2"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/abeeb-ahmed/booky-v2">View Demo</a>
+    <a href="https://booky-web-app.onrender.com/">View Demo</a>
     ·
     <a href="https://github.com/abeeb-ahmed/booky-v2/issues">Report Bug</a>
     ·
