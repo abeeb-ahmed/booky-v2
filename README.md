@@ -6,7 +6,7 @@
     <a href="https://github.com/abeeb-ahmed/booky-v2"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/abeeb-ahmed/booky-v2">View Demo</a>
+    <a href="https://booky-web-app.onrender.com/">View Demo</a>
     ·
     <a href="https://github.com/abeeb-ahmed/booky-v2/issues">Report Bug</a>
     ·
@@ -21,7 +21,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-A fully functional booking sites for making reservations. It includes user authentication, an admin page to manage users, hotels and rooms.
+A fully functional booking sites for making reservations. It includes user authentication, an admin page to cretae and delete users, hotels and rooms.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -67,8 +67,20 @@ This is an example of how to list things you need to use the software and how to
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+### Login details
+#### Admin
+<p>username - admin</p>
+<p>password - admin</p>
 
 
+#### John Doe
+<p>username - johndoe</p>
+<p>passowrd - johndoe</p>
+
+
+#### Mary Jane
+<p>username - maryjane</p>
+<p>password - maryjane</P>
 
 
 <!-- CONTRIBUTING -->
